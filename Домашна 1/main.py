@@ -113,7 +113,7 @@ def pipeline(url):
 
     tickers = fetch_and_filter_tickers(url, options)
 
-    with ThreadPoolExecutor(max_workers=5) as executor:
+    with ThreadPoolExecutor(max_workers=23) as executor:
         executor.map(process_ticker, tickers)
 
     end_time = time.time()
