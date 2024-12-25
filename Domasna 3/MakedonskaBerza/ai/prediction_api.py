@@ -1,0 +1,152 @@
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+from typing import List
+import pandas as pd
+import numpy as np
+from statsmodels.tsa.arima.model import ARIMA
+from datetime import datetime
+from ta import trend, momentum, volatility
+import ta
+
+app = FastAPI()
+
+
+# Define a model for historical data items
+class HistoricalDataItem(BaseModel):
+    date: str  # Expect date as 'YYYY-MM-DD'
+    last_transaction_price: float
+    max_price: float
+    min_price: float
+    average_price: float
+
+
+# Define a model for the list of historical data
+class HistoricalData(BaseModel):
+    data: List[HistoricalDataItem]
+
+
+# Calculate indicators
+def calculate_indicators(historical_data: pd.DataFrame, indicator_id: int, days: int):
+    indicators = ["RSI", "MACD", "Stochastic", "CCI", "MOM", "SMA", "EMA", "WMA", "HMA", "VWAP"]
+
+    historical_data['close'] = historical_data['last_transaction_price']
+    historical_data['high'] = historical_data['max_price']
+    historical_data['low'] = historical_data['min_price']
+    historical_data['volume'] = historical_data['quantity']
+
+    if indicator_id == 0:  # RSI
+        historical_data['RSI'] = ta.momentum.RSIIndicator(historical_data['close'], window=days).rsi()
+    elif indicator_id == 1:  # MACD
+        macd = ta.trend.MACD(historical_data['close'], window_slow=26, window_fast=12, window_sign=days)
+        historical_data['MACD'] = macd.macd()
+        historical_data['MACD_signal'] = macd.macd_signal()
+    elif indicator_id == 2:  # Stochastic Oscillator
+        stoch = ta.momentum.StochasticOscillator(
+            high=historical_data['high'], low=historical_data['low'], close=historical_data['close'], window=days
+        )
+        historical_data['Stochastic'] = stoch.stoch()
+        historical_data['Stochastic_signal'] = stoch.stoch_signal()
+    elif indicator_id == 3:  # CCI
+        historical_data['CCI'] = ta.trend.CCIIndicator(
+            high=historical_data['high'], low=historical_data['low'], close=historical_data['close'], window=days
+        ).cci()
+    elif indicator_id == 4:  # Momentum (MOM)
+        historical_data['MOM'] = ta.momentum.WilliamsRIndicator(
+            high=historical_data['high'], low=historical_data['low'], close=historical_data['close'], lbp=days
+        ).williams_r()
+    elif indicator_id == 5:  # SMA
+        historical_data['SMA'] = historical_data['close'].rolling(window=days).mean()
+    elif indicator_id == 6:  # EMA
+        historical_data['EMA'] = historical_data['close'].ewm(span=days, adjust=False).mean()
+    elif indicator_id == 7:  # WMA
+        historical_data['WMA'] = ta.trend.WMAIndicator(historical_data['close'], window=days).wma()
+    elif indicator_id == 8:  # HMA
+        def hma(series, period):
+            wma1 = series.rolling(window=period // 2).mean()
+            wma2 = series.rolling(window=period).mean()
+            diff = 2 * wma1 - wma2
+            return diff.rolling(window=int(period**0.5)).mean()
+
+        historical_data['HMA'] = hma(historical_data['close'], days)
+    elif indicator_id == 9:  # VWAP
+        vwap = (historical_data['close'] * historical_data['volume']).cumsum() / historical_data['volume'].cumsum()
+        historical_data['VWAP'] = vwap
+    else:
+        print("Невалиден индекс на индикатор!")
+
+    print(historical_data)
+
+    return historical_data
+
+
+# Prediction function using ARIMA
+def predict_next_month_price(historical_data: pd.DataFrame) -> float:
+    # Set the date as the index
+    historical_data['date'] = pd.to_datetime(historical_data['date'])
+    historical_data.set_index('date', inplace=True)
+
+    # Apply ARIMA model
+    model = ARIMA(historical_data['average_price'], order=(5, 1, 0))  # Adjust order if needed
+    model_fit = model.fit()
+
+    # Forecast for 30 days (next month)
+    forecast = model_fit.forecast(steps=30)
+
+    # Return the mean forecast price for the next month
+    return forecast.mean()
+
+
+# Generate buy/sell signals
+def generate_signals(historical_data: pd.DataFrame) -> pd.DataFrame:
+    # TODO
+    return historical_data
+
+
+# Define an endpoint for predicting the stock price
+# TODO: send the selected indicator_id and days[1, 7, 30] from the user
+@app.post("/predict-next-month-price/")
+async def predict_next_month_price_endpoint(historical_data: HistoricalData, indicator_id: int, days: int):
+    # Convert the list of data to a DataFrame
+    try:
+        data = pd.DataFrame([{
+            'id': item.id,
+            'average_price': item.average_price,
+            'date': item.date,
+            'last_transaction_price': item.last_transaction_price,
+            'max_price': item.max_price,
+            'min_price': item.min_price,
+            'percentage_change': item.percentage_change,
+            'quantity': item.quantity,
+            'total_turnover': item.total_turnover,
+            'turnover_best': item.turnover_best,
+            'company_id': item.company_id
+        } for item in historical_data.data])
+
+        # Calculate the indicators
+        data = calculate_indicators(data, indicator_id=indicator_id, days=days)
+
+        # Generate the signals
+        data = generate_signals(data)
+
+        # Perform prediction on the average price
+        predicted_price = predict_next_month_price(data)
+
+        # Extract latest signals
+        latest_buy_signal = data['buy_signal'].iloc[-1]
+        latest_sell_signal = data['sell_signal'].iloc[-1]
+        latest_ma_buy_signal = data['ma_buy_signal'].iloc[-1]
+        latest_ma_sell_signal = data['ma_sell_signal'].iloc[-1]
+
+        # Return in a JSON format
+        return {
+            "predicted_next_month_price": predicted_price,
+            "latest_buy_signal": latest_buy_signal,
+            "latest_sell_signal": latest_sell_signal,
+            "latest_ma_buy_signal": latest_ma_buy_signal,
+            "latest_ma_sell_signal": latest_ma_sell_signal
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+# Run the app with Uvicorn (Python ASGI server)
+# Command to run: uvicorn prediction_api:app --reload
