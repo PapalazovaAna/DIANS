@@ -47,5 +47,4 @@ async def predict_next_month_price_endpoint(historical_data: HistoricalData):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-# Run the app with Uvicorn (Python ASGI server)
-# Command to run: uvicorn prediction_api:app --reload
+ 

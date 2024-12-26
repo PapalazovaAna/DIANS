@@ -97,9 +97,57 @@ def predict_next_month_price(historical_data: pd.DataFrame) -> float:
 
 
 # Generate buy/sell signals
-def generate_signals(historical_data: pd.DataFrame) -> pd.DataFrame:
-    # TODO
+def generate_signals(historical_data: pd.DataFrame, indicator_id: int) -> pd.DataFrame:
+    if indicator_id == 0:  # RSI
+        # Generating Buy/Sell signals based on RSI
+        historical_data['buy_signal'] = historical_data['RSI'] < 30
+        historical_data['sell_signal'] = historical_data['RSI'] > 70
+    elif indicator_id == 1:  # MACD
+        # Generating Buy/Sell signals based on MACD
+        historical_data['buy_signal'] = historical_data['MACD'] > historical_data['MACD_signal']
+        historical_data['sell_signal'] = historical_data['MACD'] < historical_data['MACD_signal']
+    elif indicator_id == 2:  # Stochastic Oscillator
+        # Generating Buy/Sell signals based on Stochastic
+        historical_data['buy_signal'] = historical_data['Stochastic'] < 20
+        historical_data['sell_signal'] = historical_data['Stochastic'] > 80
+    elif indicator_id == 3:  # CCI
+        # Generating Buy/Sell signals based on CCI
+        historical_data['buy_signal'] = historical_data['CCI'] > 100
+        historical_data['sell_signal'] = historical_data['CCI'] < -100
+    elif indicator_id == 4:  # Momentum
+        # Generating Buy/Sell signals based on MOM
+        historical_data['buy_signal'] = historical_data['MOM'] > 0
+        historical_data['sell_signal'] = historical_data['MOM'] < 0
+    elif indicator_id == 5:  # SMA
+        # Generating Buy/Sell signals based on SMA
+        historical_data['buy_signal'] = historical_data['close'] > historical_data['SMA']
+        historical_data['sell_signal'] = historical_data['close'] < historical_data['SMA']
+    elif indicator_id == 6:  # EMA
+        # Generating Buy/Sell signals based on EMA
+        historical_data['buy_signal'] = historical_data['close'] > historical_data['EMA']
+        historical_data['sell_signal'] = historical_data['close'] < historical_data['EMA']
+    elif indicator_id == 7:  # WMA
+        # Generating Buy/Sell signals based on WMA
+        historical_data['buy_signal'] = historical_data['close'] > historical_data['WMA']
+        historical_data['sell_signal'] = historical_data['close'] < historical_data['WMA']
+    elif indicator_id == 8:  # HMA
+        # Generating Buy/Sell signals based on HMA
+        historical_data['buy_signal'] = historical_data['close'] > historical_data['HMA']
+        historical_data['sell_signal'] = historical_data['close'] < historical_data['HMA']
+    elif indicator_id == 9:  # VWAP
+        # Generating Buy/Sell signals based on VWAP
+        historical_data['buy_signal'] = historical_data['close'] > historical_data['VWAP']
+        historical_data['sell_signal'] = historical_data['close'] < historical_data['VWAP']
+    else:
+        print("Невалиден индекс на индикатор!")
+
+    # Additional signal columns (e.g., MA based signals)
+    # MA Buy/Sell signals can be generated for the indicators based on simple moving average crossovers
+    historical_data['ma_buy_signal'] = historical_data['close'] > historical_data['SMA']
+    historical_data['ma_sell_signal'] = historical_data['close'] < historical_data['SMA']
+
     return historical_data
+
 
 
 # Define an endpoint for predicting the stock price
