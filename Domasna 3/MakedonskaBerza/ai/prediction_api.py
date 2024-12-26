@@ -174,7 +174,7 @@ async def predict_next_month_price_endpoint(historical_data: HistoricalData, ind
         data = calculate_indicators(data, indicator_id=indicator_id, days=days)
 
         # Generate the signals
-        data = generate_signals(data)
+        data = generate_signals(data,indicator_id)
 
         # Perform prediction on the average price
         predicted_price = predict_next_month_price(data)
