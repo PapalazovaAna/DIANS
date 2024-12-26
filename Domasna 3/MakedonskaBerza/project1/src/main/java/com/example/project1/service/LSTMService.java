@@ -23,6 +23,7 @@ public class LSTMService {
     private final StockRecordRepository stockRecordRepository;
 
     private final String predictionApiUrl = "http://127.0.0.1:8000/predict-next-month-price/";
+    private final String PredictionApiUrl2 = "http://127.0.0.1:8000/predict-signals/";
 
     public Double predictNextMonth(Long companyId) {
         HttpHeaders headers = new HttpHeaders();
@@ -37,6 +38,25 @@ public class LSTMService {
         Map<String, Double> response = restTemplate.postForObject(predictionApiUrl, requestEntity, Map.class);
 
         return response != null ? response.get("predicted_next_month_price") : null;
+    }
+    //TODO: to continue
+    public List<Map<String, Object>> predictSignals(Long companyId) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        // Get historical stock data for the last month (or any other period you need)
+        List<StockRecordEntity> data = stockRecordRepository.findByCompanyIdAndDateBetween(companyId, LocalDate.now().minusMonths(1), LocalDate.now());
+
+        // Map the historical data to the format FastAPI expects
+        Map<String, Object> requestBody = Map.of("data", mapToRequestData(data));
+
+        // Create the HttpEntity with the headers and the body
+        HttpEntity<Map<String, Object>> requestEntity = new HttpEntity<>(requestBody, headers);
+
+        // Make a POST request to the FastAPI endpoint
+        List<Map<String, Object>> response = restTemplate.postForObject(PredictionApiUrl2, requestEntity, List.class);
+
+        return response != null ? response : null;
     }
 
     public static List<Map<String, Object>> mapToRequestData(List<StockRecordEntity> historicalDataEntities) {

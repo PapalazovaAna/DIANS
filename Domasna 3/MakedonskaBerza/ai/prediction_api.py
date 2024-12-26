@@ -78,6 +78,31 @@ def calculate_indicators(historical_data: pd.DataFrame, indicator_id: int, days:
 
     return historical_data
 
+# Function to filter data based on the selected timeframe
+def filter_data_by_timeframe(historical_data: pd.DataFrame, timeframe: str) -> pd.DataFrame:
+    # Convert 'date' to datetime
+    historical_data['date'] = pd.to_datetime(historical_data['date'])
+
+    if timeframe == '1_day':
+        # Use only the last day's data
+        historical_data = historical_data.tail(1)
+    elif timeframe == '1_week':
+        # Use data from the last 7 days
+        historical_data = historical_data.tail(7)
+    elif timeframe == '1_month':
+        # Use data from the last 30 days
+        historical_data = historical_data.tail(30)
+    else:
+        raise HTTPException(status_code=400, detail="Invalid timeframe. Valid options: 1_day, 1_week, 1_month")
+
+    return historical_data
+# Presmetaj indikator za razlicni vremenski ramki
+def calculate_indicators_for_timeframe(historical_data: pd.DataFrame, indicator_id: int, days: int, timeframe: str):
+    # Filter data for selected timeframe
+    historical_data = filter_data_by_timeframe(historical_data, timeframe)
+
+    # Call the function to calculate the selected indicator for the timeframe
+    return calculate_indicators(historical_data, indicator_id, days)
 
 # Prediction function using ARIMA
 def predict_next_month_price(historical_data: pd.DataFrame) -> float:
@@ -97,6 +122,7 @@ def predict_next_month_price(historical_data: pd.DataFrame) -> float:
 
 
 # Generate buy/sell signals
+
 def generate_signals(historical_data: pd.DataFrame, indicator_id: int) -> pd.DataFrame:
     if indicator_id == 0:  # RSI
         # Generating Buy/Sell signals based on RSI
@@ -145,6 +171,10 @@ def generate_signals(historical_data: pd.DataFrame, indicator_id: int) -> pd.Dat
     # MA Buy/Sell signals can be generated for the indicators based on simple moving average crossovers
     historical_data['ma_buy_signal'] = historical_data['close'] > historical_data['SMA']
     historical_data['ma_sell_signal'] = historical_data['close'] < historical_data['SMA']
+=======
+# Generate buy/sell signals
+def generate_signals(historical_data: pd.DataFrame) -> pd.DataFrame:
+>>>>>>> Stashed changes
 
     return historical_data
 
@@ -152,6 +182,31 @@ def generate_signals(historical_data: pd.DataFrame, indicator_id: int) -> pd.Dat
 
 # Define an endpoint for predicting the stock price
 # TODO: send the selected indicator_id and days[1, 7, 30] from the user
+
+@app.post("/predict-signals/")
+async def predict_signals_endpoint(historical_data: HistoricalData, indicator_id: int, days: int):
+    try:
+        data = pd.DataFrame([{
+            'date': item.date,
+            'last_transaction_price': item.last_transaction_price,
+            'max_price': item.max_price,
+            'min_price': item.min_price,
+            'average_price': item.average_price,
+        } for item in historical_data.data])
+
+        # Get signals for different timeframes
+        signals_day = generate_signals(filter_data_by_timeframe(data, "1_day"), indicator_id)
+        signals_week = generate_signals(filter_data_by_timeframe(data, "1_week"), indicator_id)
+        signals_month = generate_signals(filter_data_by_timeframe(data, "1_month"), indicator_id)
+
+        return {
+            "signals_1_day": signals_day[['buy_signal', 'sell_signal']],
+            "signals_1_week": signals_week[['buy_signal', 'sell_signal']],
+            "signals_1_month": signals_month[['buy_signal', 'sell_signal']],
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 @app.post("/predict-next-month-price/")
 async def predict_next_month_price_endpoint(historical_data: HistoricalData, indicator_id: int, days: int):
     # Convert the list of data to a DataFrame
