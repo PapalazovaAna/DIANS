@@ -53,7 +53,6 @@
         .card-title {
             color: #6a0dad;
         }
-
     </style>
 </head>
 <body class="bg-light">
@@ -92,24 +91,31 @@
                         </div>
                     </div>
 
-                    <!-- Predict Price Button and Result -->
-                    <div class="mt-4 text-center">
-                        <!-- Dropdown for Indicator Selection -->
+                    <label for="indicator">Избери индикатор:</label>
+                    <select name="indicator" id="indicator">
+                        <option value="0">RSI</option>
+                        <option value="1">MACD</option>
+                        <option value="2">Stochastic Oscillator</option>
+                        <option value="3">CCI</option>
+                        <option value="4">Momentum</option>
+                        <option value="5">SMA</option>
+                        <option value="6">EMA</option>
+                        <option value="7">WMA</option>
+                        <option value="8">HMA</option>
+                        <option value="9">VWAP</option>
+                    </select>
+
+
+                    <!-- Dropdown for selecting the time period -->
                         <div class="mb-3">
-                            <label for="indicatorSelect" class="form-label">Изберете индикатор:</label>
-                            <select class="form-select" id="indicatorSelect">
-                                <option value="1">RSI</option>
-                                <option value="2">MACD</option>
-                                <option value="3">SMA</option>
-                                <!-- Add other indicators here -->
+                            <label for="daysInput" class="form-label">Изберете период:</label>
+                            <select class="form-select" id="daysInput">
+                                <option value="1">1 ден</option>
+                                <option value="7">1 недела</option>
+                                <option value="30">1 месец</option>
                             </select>
                         </div>
 
-                        <!-- Input for Number of Days -->
-                        <div class="mb-3">
-                            <label for="daysInput" class="form-label">Број на денови:</label>
-                            <input type="number" class="form-control" id="daysInput" min="1" max="365" value="30">
-                        </div>
 
                         <!-- Predict Button -->
                         <button class="btn btn-primary predict-btn" th:attr="data-company-id=${data.id}">
@@ -138,7 +144,6 @@
     </div>
 </div>
 
-
 <!-- JavaScript for Chart.js and Predict Button -->
 <script th:inline="javascript">
     /*<![CDATA[*/
@@ -158,11 +163,11 @@
             // Render the Chart
             const ctx = document.getElementById("chart-" + data.id).getContext("2d");
             const chartData = {
-                labels: data.dates || [], // Fallback to empty array
+                labels: data.dates || [],
                 datasets: [
                     {
                         label: "Цена",
-                        data: data.prices || [], // Fallback to empty array
+                        data: data.prices || [],
                         borderColor: "#6a0dad",
                         borderWidth: 2,
                         fill: false,
@@ -193,37 +198,47 @@
         });
 
         // Handle Predict Button Clicks
-        document.querySelectorAll(".predict-btn").forEach(function (button) {
-            button.addEventListener("click", function () {
-                const companyId = button.getAttribute("data-company-id");
-                const predictionElement = document.getElementById("prediction-" + companyId);
+        document.addEventListener('DOMContentLoaded', function () {
+            const predictPriceBtns = document.querySelectorAll('.predict-btn');
 
-                // Make API call to the prediction endpoint
-                fetch('/api/predict', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: new URLSearchParams({ companyId })
-                })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error("Failed to fetch prediction");
-                        }
-                        return response.json();
+            predictPriceBtns.forEach(button => {
+                button.addEventListener('click', function () {
+                    const companyId = button.getAttribute('data-company-id');
+                    const isIndicatorPrediction = button.innerText.includes('сигнал');
+                    const indicatorId = document.getElementById('indicator').value;
+                    const days = document.getElementById('daysInput').value;
+
+                    let url = '';
+                    let body = {};
+
+                    if (isIndicatorPrediction) {
+                        url = '/api/predict-indicators-and-signals';
+                        body = { companyId, indicatorId, days };
+                    } else {
+                        url = '/api/predict';
+                        body = { companyId };
+                    }
+
+                    fetch(url, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(body)
                     })
-                    .then(predictedPrice => {
-                        // Update the text element with the predicted price
-                        predictionElement.textContent = `Следна цена: ${predictedPrice.toFixed(2)} ден`;
-                        predictionElement.classList.add("success");
-                        predictionElement.classList.remove("error");
-                    })
-                    .catch(error => {
-                        console.error("Error predicting price:", error);
-                        predictionElement.textContent = "Нема доволно податоци за предвидување.";
-                        predictionElement.classList.add("error");
-                        predictionElement.classList.remove("success");
-                    });
+                        .then(response => response.json())
+                        .then(data => {
+                            const resultElement = document.getElementById('prediction-' + companyId);
+                            if (isIndicatorPrediction) {
+                                resultElement.innerHTML = `Индикатор: ${JSON.stringify(data)}`;
+                            } else {
+                                resultElement.innerHTML = `Прогнозирана цена: ${data}`;
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                });
             });
         });
     });

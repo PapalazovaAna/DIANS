@@ -18,7 +18,7 @@ class HistoricalDataItem(BaseModel):
     max_price: float
     min_price: float
     average_price: float
-
+    quantity: int
 
 # Define a model for the list of historical data
 class HistoricalData(BaseModel):

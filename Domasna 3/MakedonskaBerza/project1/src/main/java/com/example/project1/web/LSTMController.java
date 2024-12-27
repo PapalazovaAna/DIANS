@@ -22,6 +22,7 @@ public class LSTMController {
         double predictedPrice = LSTMService.predictNextMonth(companyId);
         return ResponseEntity.ok(predictedPrice);
     }
+    
 
     @PostMapping("/predict-indicators-and-signals")
     public ResponseEntity<Map<String, Object>> predictIndicatorsAndSignals(
