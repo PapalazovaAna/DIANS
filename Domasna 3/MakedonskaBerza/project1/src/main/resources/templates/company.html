@@ -91,6 +91,36 @@
                             </p>
                         </div>
                     </div>
+
+                    <!-- Predict Price Button and Result -->
+                    <div class="mt-4 text-center">
+                        <!-- Dropdown for Indicator Selection -->
+                        <div class="mb-3">
+                            <label for="indicatorSelect" class="form-label">Изберете индикатор:</label>
+                            <select class="form-select" id="indicatorSelect">
+                                <option value="1">RSI</option>
+                                <option value="2">MACD</option>
+                                <option value="3">SMA</option>
+                                <!-- Add other indicators here -->
+                            </select>
+                        </div>
+
+                        <!-- Input for Number of Days -->
+                        <div class="mb-3">
+                            <label for="daysInput" class="form-label">Број на денови:</label>
+                            <input type="number" class="form-control" id="daysInput" min="1" max="365" value="30">
+                        </div>
+
+                        <!-- Predict Button -->
+                        <button class="btn btn-primary predict-btn" th:attr="data-company-id=${data.id}">
+                            Пресметај индикатор и сигнал
+                        </button>
+
+                        <!-- Prediction Result -->
+                        <p class="mt-3 prediction-message" th:attr="id='prediction-' + ${data.id}">
+                            <!-- Prediction result will go here -->
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -176,24 +206,24 @@
                     },
                     body: new URLSearchParams({ companyId })
                 })
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error("Failed to fetch prediction");
-                            }
-                            return response.json();
-                        })
-                        .then(predictedPrice => {
-                            // Update the text element with the predicted price
-                            predictionElement.textContent = `Следна цена: ${predictedPrice.toFixed(2)} ден`;
-                            predictionElement.classList.add("success");
-                            predictionElement.classList.remove("error");
-                        })
-                        .catch(error => {
-                            console.error("Error predicting price:", error);
-                            predictionElement.textContent = "Нема доволно податоци за предвидување.";
-                            predictionElement.classList.add("error");
-                            predictionElement.classList.remove("success");
-                        });
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Failed to fetch prediction");
+                        }
+                        return response.json();
+                    })
+                    .then(predictedPrice => {
+                        // Update the text element with the predicted price
+                        predictionElement.textContent = `Следна цена: ${predictedPrice.toFixed(2)} ден`;
+                        predictionElement.classList.add("success");
+                        predictionElement.classList.remove("error");
+                    })
+                    .catch(error => {
+                        console.error("Error predicting price:", error);
+                        predictionElement.textContent = "Нема доволно податоци за предвидување.";
+                        predictionElement.classList.add("error");
+                        predictionElement.classList.remove("success");
+                    });
             });
         });
     });

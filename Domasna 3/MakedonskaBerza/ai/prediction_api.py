@@ -27,7 +27,7 @@ class HistoricalData(BaseModel):
 
 # Calculate indicators
 def calculate_indicators(historical_data: pd.DataFrame, indicator_id: int, days: int):
-    indicators = ["RSI", "MACD", "Stochastic", "CCI", "MOM", "SMA", "EMA", "WMA", "HMA", "VWAP"]
+    # indicators = ["RSI", "MACD", "Stochastic", "CCI", "MOM", "SMA", "EMA", "WMA", "HMA", "VWAP"]
 
     historical_data['close'] = historical_data['last_transaction_price']
     historical_data['high'] = historical_data['max_price']
@@ -39,13 +39,11 @@ def calculate_indicators(historical_data: pd.DataFrame, indicator_id: int, days:
     elif indicator_id == 1:  # MACD
         macd = ta.trend.MACD(historical_data['close'], window_slow=26, window_fast=12, window_sign=days)
         historical_data['MACD'] = macd.macd()
-        historical_data['MACD_signal'] = macd.macd_signal()
     elif indicator_id == 2:  # Stochastic Oscillator
         stoch = ta.momentum.StochasticOscillator(
             high=historical_data['high'], low=historical_data['low'], close=historical_data['close'], window=days
         )
         historical_data['Stochastic'] = stoch.stoch()
-        historical_data['Stochastic_signal'] = stoch.stoch_signal()
     elif indicator_id == 3:  # CCI
         historical_data['CCI'] = ta.trend.CCIIndicator(
             high=historical_data['high'], low=historical_data['low'], close=historical_data['close'], window=days
@@ -74,9 +72,8 @@ def calculate_indicators(historical_data: pd.DataFrame, indicator_id: int, days:
     else:
         print("Невалиден индекс на индикатор!")
 
-    print(historical_data)
-
     return historical_data
+
 
 # Function to filter data based on the selected timeframe
 def filter_data_by_timeframe(historical_data: pd.DataFrame, timeframe: str) -> pd.DataFrame:
@@ -96,6 +93,8 @@ def filter_data_by_timeframe(historical_data: pd.DataFrame, timeframe: str) -> p
         raise HTTPException(status_code=400, detail="Invalid timeframe. Valid options: 1_day, 1_week, 1_month")
 
     return historical_data
+
+
 # Presmetaj indikator za razlicni vremenski ramki
 def calculate_indicators_for_timeframe(historical_data: pd.DataFrame, indicator_id: int, days: int, timeframe: str):
     # Filter data for selected timeframe
@@ -103,6 +102,7 @@ def calculate_indicators_for_timeframe(historical_data: pd.DataFrame, indicator_
 
     # Call the function to calculate the selected indicator for the timeframe
     return calculate_indicators(historical_data, indicator_id, days)
+
 
 # Prediction function using ARIMA
 def predict_next_month_price(historical_data: pd.DataFrame) -> float:
@@ -122,7 +122,6 @@ def predict_next_month_price(historical_data: pd.DataFrame) -> float:
 
 
 # Generate buy/sell signals
-
 def generate_signals(historical_data: pd.DataFrame, indicator_id: int) -> pd.DataFrame:
     if indicator_id == 0:  # RSI
         # Generating Buy/Sell signals based on RSI
@@ -171,28 +170,29 @@ def generate_signals(historical_data: pd.DataFrame, indicator_id: int) -> pd.Dat
     # MA Buy/Sell signals can be generated for the indicators based on simple moving average crossovers
     historical_data['ma_buy_signal'] = historical_data['close'] > historical_data['SMA']
     historical_data['ma_sell_signal'] = historical_data['close'] < historical_data['SMA']
-=======
-# Generate buy/sell signals
-def generate_signals(historical_data: pd.DataFrame) -> pd.DataFrame:
->>>>>>> Stashed changes
 
     return historical_data
 
 
-
 # Define an endpoint for predicting the stock price
 # TODO: send the selected indicator_id and days[1, 7, 30] from the user
-
-@app.post("/predict-signals/")
+@app.post("/predict-indicators-and-signals/")
 async def predict_signals_endpoint(historical_data: HistoricalData, indicator_id: int, days: int):
     try:
         data = pd.DataFrame([{
             'date': item.date,
+            'average_price': item.average_price,
             'last_transaction_price': item.last_transaction_price,
             'max_price': item.max_price,
             'min_price': item.min_price,
-            'average_price': item.average_price,
+            'quantity': item.quantity
         } for item in historical_data.data])
+
+        indicators = ["RSI", "MACD", "Stochastic", "CCI", "MOM", "SMA", "EMA", "WMA", "HMA", "VWAP"]
+
+        # Calculate the indicators
+        data = calculate_indicators(data, indicator_id=indicator_id, days=days)
+        indicator_value = data.tail(1)[indicators[indicator_id]].values[0]
 
         # Get signals for different timeframes
         signals_day = generate_signals(filter_data_by_timeframe(data, "1_day"), indicator_id)
@@ -200,53 +200,30 @@ async def predict_signals_endpoint(historical_data: HistoricalData, indicator_id
         signals_month = generate_signals(filter_data_by_timeframe(data, "1_month"), indicator_id)
 
         return {
-            "signals_1_day": signals_day[['buy_signal', 'sell_signal']],
-            "signals_1_week": signals_week[['buy_signal', 'sell_signal']],
-            "signals_1_month": signals_month[['buy_signal', 'sell_signal']],
+            "indicator_value": indicator_value,
+            "signals_1_day": signals_day[['buy_signal', 'sell_signal']],  # .to_dict(orient="records"),
+            "signals_1_week": signals_week[['buy_signal', 'sell_signal']],  # .to_dict(orient="records"),
+            "signals_1_month": signals_month[['buy_signal', 'sell_signal']]  # .to_dict(orient="records")
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.post("/predict-next-month-price/")
 async def predict_next_month_price_endpoint(historical_data: HistoricalData, indicator_id: int, days: int):
     # Convert the list of data to a DataFrame
     try:
         data = pd.DataFrame([{
-            'id': item.id,
-            'average_price': item.average_price,
             'date': item.date,
-            'last_transaction_price': item.last_transaction_price,
-            'max_price': item.max_price,
-            'min_price': item.min_price,
-            'percentage_change': item.percentage_change,
-            'quantity': item.quantity,
-            'total_turnover': item.total_turnover,
-            'turnover_best': item.turnover_best,
-            'company_id': item.company_id
+            'average_price': item.average_price,
         } for item in historical_data.data])
-
-        # Calculate the indicators
-        data = calculate_indicators(data, indicator_id=indicator_id, days=days)
-
-        # Generate the signals
-        data = generate_signals(data,indicator_id)
 
         # Perform prediction on the average price
         predicted_price = predict_next_month_price(data)
 
-        # Extract latest signals
-        latest_buy_signal = data['buy_signal'].iloc[-1]
-        latest_sell_signal = data['sell_signal'].iloc[-1]
-        latest_ma_buy_signal = data['ma_buy_signal'].iloc[-1]
-        latest_ma_sell_signal = data['ma_sell_signal'].iloc[-1]
-
         # Return in a JSON format
         return {
-            "predicted_next_month_price": predicted_price,
-            "latest_buy_signal": latest_buy_signal,
-            "latest_sell_signal": latest_sell_signal,
-            "latest_ma_buy_signal": latest_ma_buy_signal,
-            "latest_ma_sell_signal": latest_ma_sell_signal
+            "predicted_next_month_price": predicted_price
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
