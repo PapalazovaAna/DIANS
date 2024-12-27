@@ -51,6 +51,7 @@ public class LSTMService {
         Map<String, Object> requestBody = new HashMap<>();
         requestBody.put("data", mapToRequestData(data));
         requestBody.put("indicator_id", indicatorId);
+        requestBody.put("days", days);
 
         // Create the HttpEntity with the headers and the body
         HttpEntity<Map<String, Object>> requestEntity = new HttpEntity<>(requestBody, headers);
