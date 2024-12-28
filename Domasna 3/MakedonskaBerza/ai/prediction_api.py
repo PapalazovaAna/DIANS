@@ -177,7 +177,7 @@ def generate_signals(historical_data: pd.DataFrame, indicator_id: int) -> pd.Dat
 # Define an endpoint for predicting the stock price
 # TODO: send the selected indicator_id and days[1, 7, 30] from the user
 @app.post("/predict-indicators-and-signals/")
-async def predict_signals_endpoint(historical_data: HistoricalData, indicator_id: int, days: int):
+async def predict_indicators_and_signals_endpoint(historical_data: HistoricalData, indicator_id: int, days: int):
     try:
         data = pd.DataFrame([{
             'date': item.date,
@@ -206,27 +206,22 @@ async def predict_signals_endpoint(historical_data: HistoricalData, indicator_id
             "signals_1_month": signals_month[['buy_signal', 'sell_signal']]  # .to_dict(orient="records")
         }
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        # Handle exceptions during prediction
+        print(f"Error during prediction: {str(e)}")
+        return {"error": str(e)}  # Return an error message in the response
 
 
 @app.post("/predict-next-month-price/")
-async def predict_next_month_price_endpoint(historical_data: HistoricalData, indicator_id: int, days: int):
+async def predict_next_month_price_endpoint(historical_data: HistoricalData):
     # Convert the list of data to a DataFrame
     try:
-        data = pd.DataFrame([{
-            'date': item.date,
-            'average_price': item.average_price,
-        } for item in historical_data.data])
-
-        # Perform prediction on the average price
+        data = pd.DataFrame([item.dict() for item in historical_data.data])
         predicted_price = predict_next_month_price(data)
-
-        # Return in a JSON format
-        return {
-            "predicted_next_month_price": predicted_price
-        }
+        return {"predicted_next_month_price": predicted_price}
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        # Handle exceptions during prediction
+        print(f"Error during prediction: {str(e)}")
+        return {"error": str(e)}  # Return an error message in the response
 
 # Run the app with Uvicorn (Python ASGI server)
 # Command to run: uvicorn prediction_api:app --reload
