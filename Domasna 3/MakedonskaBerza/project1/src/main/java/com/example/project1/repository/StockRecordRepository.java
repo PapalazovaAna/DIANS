@@ -17,3 +17,5 @@ public interface StockRecordRepository extends JpaRepository<StockRecordEntity, 
 
     List<StockRecordEntity> findByCompanyId(Long companyId);
 }
+
+

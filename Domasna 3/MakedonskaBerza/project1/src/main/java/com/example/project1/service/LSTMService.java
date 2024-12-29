@@ -22,7 +22,7 @@ public class LSTMService {
     private final StockRecordRepository stockRecordRepository;
 
     private final String predictionApiUrl = "http://127.0.0.1:8080/predict-next-month-price/";
-    private final String predictionApiUrl2 = "http://127.0.0.1:8080/generate_signal/";
+    private final String predictionApiUrl2 = "http://127.0.0.1:5000/generate_signal";
 
     public Double predictNextMonth(Long companyId) {
         HttpHeaders headers = new HttpHeaders();
@@ -35,6 +35,8 @@ public class LSTMService {
         HttpEntity<Map<String, Object>> requestEntity = new HttpEntity<>(requestBody, headers);
 
         Map<String, Double> response = restTemplate.postForObject(predictionApiUrl, requestEntity, Map.class);
+
+        System.out.println("Response:" + response);
 
         return response != null ? response.get("predicted_next_month_price") : null;
     }
@@ -65,7 +67,13 @@ public class LSTMService {
 
         Map<String, Object> responseBody = response.getBody();
 
-        return (responseBody != null && responseBody.containsKey("trade_signal")) ? responseBody.get("trade_signal").toString() : null;
+        System.out.println("Response:" + responseBody);
+
+        if (responseBody != null && responseBody.containsKey("signal_result")) {
+            return responseBody.get("signal_result").toString();
+        } else {
+            throw new RuntimeException("Failed to retrieve a valid signal from the Python API.");
+        }
     }
 
     public static List<Map<String, Object>> mapToRequestData(List<StockRecordEntity> historicalDataEntities) {

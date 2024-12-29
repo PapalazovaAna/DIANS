@@ -150,22 +150,22 @@ def generate_trade_signal(dataframe, period=14):
 @app.route('/generate_signal', methods=['POST'])
 def api_trade_signal():
     incoming_data = request.get_json()
-    dataset = pd.DataFrame(incoming_data)
+    data = pd.DataFrame(incoming_data)
     analysis_windows = [5, 10, 14, 20, 50]
 
     for window in analysis_windows:
-        dataset[f'RSI_{window}'] = compute_rsi(dataset, lookback=window)
-        dataset[f'MACD_line_{window}'], dataset[f'MACD_signal_{window}'], dataset[f'MACD_hist_{window}'] = compute_macd(dataset)
-        dataset[f'Stoch_{window}'] = stochastic_oscillator(dataset, window=window)
-        dataset[f'CCI_index_{window}'] = compute_cci(dataset, window=window)
-        dataset[f'ATR_value_{window}'] = compute_atr(dataset, window=window)
-        dataset[f'SMA_{window}'] = calculate_simple_moving_average(dataset, period=window)
-        dataset[f'EMA_{window}'] = calculate_exponential_moving_average(dataset, smoothing=window)
-        dataset[f'WMA_{window}'] = calculate_weighted_moving_average(dataset, period=window)
-        dataset[f'HMA_{window}'] = calculate_hull_moving_average(dataset, length=window)
-        dataset[f'VWAP_{window}'] = calculate_volume_weighted_average_price(dataset)
+        data[f'RSI_{window}'] = compute_rsi(data, lookback=window)
+        data[f'MACD_line_{window}'], data[f'MACD_signal_{window}'], data[f'MACD_hist_{window}'] = compute_macd(data)
+        data[f'Stoch_{window}'] = stochastic_oscillator(data, window=window)
+        data[f'CCI_index_{window}'] = compute_cci(data, window=window)
+        data[f'ATR_value_{window}'] = compute_atr(data, window=window)
+        data[f'SMA_{window}'] = calculate_simple_moving_average(data, period=window)
+        data[f'EMA_{window}'] = calculate_exponential_moving_average(data, smoothing=window)
+        data[f'WMA_{window}'] = calculate_weighted_moving_average(data, period=window)
+        data[f'HMA_{window}'] = calculate_hull_moving_average(data, length=window)
+        data[f'VWAP_{window}'] = calculate_volume_weighted_average_price(data)
 
-    signal_result = generate_trade_signal(dataset)
+    signal_result = generate_trade_signal(data)
 
     return jsonify({"trade_signal": signal_result})
 

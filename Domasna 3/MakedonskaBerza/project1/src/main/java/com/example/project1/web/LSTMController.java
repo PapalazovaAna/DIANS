@@ -16,7 +16,7 @@ public class LSTMController {
 
     @PostMapping("/predict")
     public ResponseEntity<String> generateSignal(@RequestParam(name = "companyId") Long companyId) {
-        String response = String.valueOf(LSTMService.predictIndicatorsAndSignals(companyId));
+        String response = LSTMService.predictIndicatorsAndSignals(companyId);
         return ResponseEntity.ok(response);
     }
 
