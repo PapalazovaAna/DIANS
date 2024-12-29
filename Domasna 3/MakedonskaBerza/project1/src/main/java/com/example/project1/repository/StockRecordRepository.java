@@ -14,4 +14,6 @@ public interface StockRecordRepository extends JpaRepository<StockRecordEntity, 
     Optional<StockRecordEntity> findByDateAndCompany(LocalDate date, StockEntity company);
     List<StockRecordEntity> findByCompanyIdAndDateBetween(Long companyId, LocalDate from, LocalDate to);
     List<StockRecordEntity> findAllByDate(LocalDate date);
+
+    List<StockRecordEntity> findByCompanyId(Long companyId);
 }

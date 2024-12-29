@@ -64,6 +64,4 @@ public class PageController {
         return "company";
     }
 
-
-
 }

@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fdd2629-a1a5-4d74-a4ab-951f10e4e036" name="Changes" comment="" />
+    <list default="true" id="4fdd2629-a1a5-4d74-a4ab-951f10e4e036" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Domasna 3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Domasna 3.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/ai/prediction_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/ai/prediction_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/project1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/project1/project1.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/java/com/example/project1/model/StockEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/java/com/example/project1/model/StockEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/java/com/example/project1/model/StockRecordEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/java/com/example/project1/model/StockRecordEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/java/com/example/project1/service/LSTMService.java" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/java/com/example/project1/service/LSTMService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/java/com/example/project1/web/LSTMController.java" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/java/com/example/project1/web/LSTMController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/java/com/example/project1/web/PageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/java/com/example/project1/web/PageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/resources/templates/company.html" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/resources/templates/company.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/project1/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/target/classes/com/example/project1/model/StockEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/project1/target/classes/com/example/project1/model/StockEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/target/classes/com/example/project1/model/StockRecordEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/project1/target/classes/com/example/project1/model/StockRecordEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/target/classes/com/example/project1/service/LSTMService.class" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/project1/target/classes/com/example/project1/service/LSTMService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/target/classes/com/example/project1/web/LSTMController.class" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/project1/target/classes/com/example/project1/web/LSTMController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/target/classes/templates/company.html" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/project1/target/classes/templates/company.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +30,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -25,10 +46,14 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "technical-analysis",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/PC/Desktop/DizajnDomasna3/Domasna 3/MakedonskaBerza",
+    "last_opened_file_path": "C:/Users/User/Desktop/FINKI/5semestar/DizajnIArhitekturaNaSoftver/DIANS-proekt/DIANS/Domasna 3/MakedonskaBerza",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -42,6 +67,7 @@
       <updated>1735206105645</updated>
       <workItem from="1735206106675" duration="17000" />
       <workItem from="1735206135204" duration="7000" />
+      <workItem from="1735416081398" duration="146000" />
     </task>
     <servers />
   </component>

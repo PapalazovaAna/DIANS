@@ -3,13 +3,12 @@ package com.example.project1.service;
 import com.example.project1.model.StockRecordEntity;
 import com.example.project1.repository.StockRecordRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,8 +21,8 @@ public class LSTMService {
     private final RestTemplate restTemplate = new RestTemplate();
     private final StockRecordRepository stockRecordRepository;
 
-    private final String predictionApiUrl = "http://127.0.0.1:8000/predict-next-month-price/";
-    private final String predictionApiUrl2 = "http://127.0.0.1:8000/predict-indicators-and-signals/";
+    private final String predictionApiUrl = "http://127.0.0.1:8080/predict-next-month-price/";
+    private final String predictionApiUrl2 = "http://127.0.0.1:8080/generate_signal/";
 
     public Double predictNextMonth(Long companyId) {
         HttpHeaders headers = new HttpHeaders();
@@ -40,26 +39,33 @@ public class LSTMService {
         return response != null ? response.get("predicted_next_month_price") : null;
     }
 
-    public Map<String, Object> predictIndicatorsAndSignals(Long companyId, int indicatorId, int days) {
+    public String predictIndicatorsAndSignals(Long companyId) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        // Get historical stock data for the last month (or any other period you need)
-        List<StockRecordEntity> data = stockRecordRepository.findByCompanyIdAndDateBetween(companyId, LocalDate.now().minusDays(days), LocalDate.now());
+        List<StockRecordEntity> data = stockRecordRepository.findByCompanyId(companyId);
 
-        // Map the historical data to the format FastAPI expects
-        Map<String, Object> requestBody = new HashMap<>();
-        requestBody.put("data", mapToRequestData(data));
-        requestBody.put("indicator_id", indicatorId);
-        requestBody.put("days", days);
+        List<Map<String, Object>> requestBody = new ArrayList<>();
+        for (StockRecordEntity s : data){
+            Map<String, Object> record = new HashMap<>();
+            record.put("date", s.getDate().toString());
+            record.put("open", (s.getMaxPrice() + s.getMinPrice()) / 2.0);
+            record.put("close", s.getLastTransactionPrice());
+            record.put("high", s.getMaxPrice());
+            record.put("low", s.getMinPrice());
+            record.put("volume", s.getQuantity());
+            requestBody.add(record);
+        }
 
         // Create the HttpEntity with the headers and the body
-        HttpEntity<Map<String, Object>> requestEntity = new HttpEntity<>(requestBody, headers);
+        HttpEntity<List<Map<String, Object>>> requestEntity = new HttpEntity<>(requestBody, headers);
 
         // Make a POST request to the FastAPI endpoint
-        Map<String, Object> response = restTemplate.postForObject(predictionApiUrl2, requestEntity, Map.class);
+        ResponseEntity<Map> response = restTemplate.exchange(predictionApiUrl2, HttpMethod.POST, requestEntity, Map.class);
 
-        return response != null ? response : null;
+        Map<String, Object> responseBody = response.getBody();
+
+        return (responseBody != null && responseBody.containsKey("trade_signal")) ? responseBody.get("trade_signal").toString() : null;
     }
 
     public static List<Map<String, Object>> mapToRequestData(List<StockRecordEntity> historicalDataEntities) {
@@ -67,10 +73,6 @@ public class LSTMService {
             Map<String, Object> dataMap = new HashMap<>();
             dataMap.put("date", entity.getDate().toString());
             dataMap.put("average_price", entity.getAveragePrice());
-            dataMap.put("last_transaction_price", entity.getLastTransactionPrice());
-            dataMap.put("max_price", entity.getMaxPrice());
-            dataMap.put("min_price", entity.getMinPrice());
-            dataMap.put("quantity", entity.getQuantity());
             return dataMap;
         }).collect(Collectors.toList());
     }
