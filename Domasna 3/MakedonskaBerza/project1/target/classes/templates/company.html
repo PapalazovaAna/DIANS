@@ -87,11 +87,16 @@
                                     <button class="btn btn-primary predict-btn" th:attr="data-company-id=${data.id}">
                                         Генерирај сигнал
                                     </button>
+                                    <button class="btn btn-secondary nlp-btn" th:attr="data-company-id=${data.id}">
+                                        NLP анализа
+                                    </button>
                                 </div>
                                 <p class="mt-3 prediction-message" th:attr="id='prediction-' + ${data.id}">
                                     <!-- Prediction result will go here -->
                                 </p>
-
+                                <p class="mt-3 nlp-message" th:attr="id='nlp-' + ${data.id}">
+                                    <!-- NLP result will go here -->
+                                </p>
                                 <!-- New "Predict Next Month Price" Section -->
                                 <button class="btn btn-info predict-next-month-btn" th:attr="data-company-id=${data.id}">
                                     Предвиди цена за следниот месец
@@ -206,7 +211,39 @@
                     });
             });
         });
+        // Handle NLP Analysis Button Clicks
+        document.querySelectorAll(".nlp-btn").forEach(function (button) {
+            button.addEventListener("click", function () {
+                const companyId = button.getAttribute("data-company-id");
+                const nlpElement = document.getElementById("nlp-" + companyId);
 
+                // Make API call to the NLP analysis endpoint
+                fetch('/api/analyze?companyId=' + companyId , {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Failed to fetch NLP analysis");
+                        }
+                        return response.json();
+                    })
+                    .then(response => {
+                        // Display NLP recommendation
+                        nlpElement.textContent = `Сентимент: ${response.sentimentScore}, Препорака: ${response.recommendation}`;
+                        nlpElement.classList.add("success");
+                        nlpElement.classList.remove("error");
+                    })
+                    .catch(error => {
+                        console.error("Error analyzing sentiment:", error);
+                        nlpElement.textContent = "Unable to fetch sentiment analysis.";
+                        nlpElement.classList.add("error");
+                        nlpElement.classList.remove("success");
+                    });
+            });
+        });
         //Handle Predict Next Month Price Button Clicks
         document.querySelectorAll(".predict-next-month-btn").forEach(function (button) {
             button.addEventListener("click", function () {

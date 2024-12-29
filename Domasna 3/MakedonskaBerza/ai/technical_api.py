@@ -1,7 +1,9 @@
 import numpy as np
 import pandas as pd
 from flask import Flask, jsonify, request
-
+import requests
+from bs4 import BeautifulSoup
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 app=Flask(__name__)
 
 def compute_rsi(data,lookback=14):
@@ -146,6 +148,7 @@ def generate_trade_signal(dataframe, period=14):
     return overall_signal
 
 
+
 #Route
 @app.route('/generate_signal', methods=['POST'])
 def api_trade_signal():
@@ -168,7 +171,68 @@ def api_trade_signal():
     signal_result = generate_trade_signal(data)
 
     return jsonify({"trade_signal": signal_result})
+def company_news(company_code):
+    url = f"https://www.mse.mk/mk/search/{company_code}"
+    response = requests.get(url)
+    if response.status_code == 200:
+        soup = BeautifulSoup(response.text, 'html.parser')
+        print(soup.prettify())
+        row_element = soup.find('div', class_='row')
+        if row_element:
+            first_news_link = row_element.find('a', href=True)
+            if first_news_link:
+                news_url = f"https://www.mse.mk{first_news_link['href']}"
+                news_response = requests.get(news_url)
+                if news_response.status_code == 200:
+                    news_soup = BeautifulSoup(news_response.text, 'html.parser')
+                    paragraphs = news_soup.find_all('p')
+                    for paragraph in paragraphs:
+                        if company_code in paragraph.text:
+                            return paragraph.text.strip()
+                    return "Company code not mentioned in the news article."
+                return f"Failed to fetch news details: {news_response.status_code}"
+            return "No news link found under the 'row' element."
+        return "No 'row' element found for this company ID."
+    else:
+        return f"Failed to fetch company page: {response.status_code}"
 
+def analyzing_with_infos(infos):
+    sent_analyzer = SentimentIntensityAnalyzer()
+    sent = sent_analyzer.polarity_scores(infos)
+    return sent['compound']
+
+
+
+def reccs(value):
+    if value > 0.05:
+        return "BUY"
+    elif value < -0.05:
+        return "SELL"
+    else:
+        return "HOLD"
+
+
+@app.route('/analyze', methods=['GET'])
+def analyze_company():
+    companycode = request.args.get('company_code')
+    if not companycode:
+        return jsonify({"error": "company_code is required"}), 400
+    print(f"Fetching news for company code: {companycode}")
+
+
+    news = company_news(companycode)
+    if "Failed to fetch" in news or "No news found" in news:
+        return jsonify({"error": news}), 404
+
+    sentimentscore = analyzing_with_infos(news)
+    recommendation = reccs(sentimentscore)
+
+
+    return jsonify({
+        "company_code": companycode,
+        "sentiment_score": sentimentscore,
+        "recommendation": recommendation
+    })
 
 
 if __name__ == "__main__":

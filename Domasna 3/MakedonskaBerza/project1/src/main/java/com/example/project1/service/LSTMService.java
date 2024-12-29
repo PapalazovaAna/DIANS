@@ -1,7 +1,10 @@
 package com.example.project1.service;
 
+import com.example.project1.model.StockEntity;
 import com.example.project1.model.StockRecordEntity;
+import com.example.project1.model.dto.NLPResponse;
 import com.example.project1.repository.StockRecordRepository;
+import com.example.project1.repository.StockRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -20,9 +23,10 @@ public class LSTMService {
 
     private final RestTemplate restTemplate = new RestTemplate();
     private final StockRecordRepository stockRecordRepository;
-
+    private final StockRepository stockRepository;
     private final String predictionApiUrl = "http://127.0.0.1:8000/predict-next-month-price/";
     private final String predictionApiUrl2 = "http://127.0.0.1:5000/generate_signal";
+    private final String NLPUrl = "http://127.0.0.1:5000/analyze";
 
     public Double predictNextMonth(Long companyId) {
         HttpHeaders headers = new HttpHeaders();
@@ -71,7 +75,39 @@ public class LSTMService {
             throw new RuntimeException("Failed to retrieve a valid signal from the Python API.");
         }
     }
+    public NLPResponse nlp(Long companyId) throws Exception {
+        StockEntity companyid = stockRepository.findById(companyId).orElseThrow(() -> new Exception("Company not found"));
 
+        String companycode = companyid.getCompanyCode();
+        System.out.println("Company Code: " + companycode);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        ResponseEntity<Map> responseEntity = restTemplate.exchange(
+                NLPUrl + "?company_code=" + companycode,
+                HttpMethod.GET,
+                new HttpEntity<>(headers),
+                Map.class
+        );
+
+        Map<String, Object> responseBody = responseEntity.getBody();
+        System.out.println("Response from Python API: " + responseBody);
+
+        if (responseBody != null) {
+            if (responseBody.containsKey("error")) {
+                String errorMessage = (String) responseBody.get("error");
+                throw new RuntimeException("Error from Python API: " + errorMessage);
+            }
+
+            NLPResponse nlpResponse = new NLPResponse();
+            nlpResponse.sentimentScore = (Double) responseBody.get("sentiment_score");
+            nlpResponse.recommendation = (String) responseBody.get("recommendation");
+
+            return nlpResponse;
+        } else {
+            throw new RuntimeException("Failed to retrieve sentiment analysis from the Python API.");
+        }
+    }
     public static List<Map<String, Object>> mapToRequestData(List<StockRecordEntity> historicalDataEntities) {
         return historicalDataEntities.stream().map(entity -> {
             Map<String, Object> dataMap = new HashMap<>();
