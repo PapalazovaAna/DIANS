@@ -21,22 +21,20 @@ public class LSTMService {
     private final RestTemplate restTemplate = new RestTemplate();
     private final StockRecordRepository stockRecordRepository;
 
-    private final String predictionApiUrl = "http://127.0.0.1:8080/predict-next-month-price/";
+    private final String predictionApiUrl = "http://127.0.0.1:8000/predict-next-month-price/";
     private final String predictionApiUrl2 = "http://127.0.0.1:5000/generate_signal";
 
     public Double predictNextMonth(Long companyId) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        List<StockRecordEntity> data = stockRecordRepository.findByCompanyIdAndDateBetween(companyId, LocalDate.now().minusMonths(1), LocalDate.now());
+        List<StockRecordEntity> data = stockRecordRepository.findByCompanyIdAndDateBetween(companyId, LocalDate.now().minusMonths(3), LocalDate.now());
 
         Map<String, Object> requestBody = Map.of("data", mapToRequestData(data));
 
         HttpEntity<Map<String, Object>> requestEntity = new HttpEntity<>(requestBody, headers);
 
         Map<String, Double> response = restTemplate.postForObject(predictionApiUrl, requestEntity, Map.class);
-
-        System.out.println("Response:" + response);
 
         return response != null ? response.get("predicted_next_month_price") : null;
     }
@@ -66,8 +64,6 @@ public class LSTMService {
         ResponseEntity<Map> response = restTemplate.exchange(predictionApiUrl2, HttpMethod.POST, requestEntity, Map.class);
 
         Map<String, Object> responseBody = response.getBody();
-
-        System.out.println("Response:" + responseBody);
 
         if (responseBody != null && responseBody.containsKey("trade_signal")) {
             return responseBody.get("trade_signal").toString();

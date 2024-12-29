@@ -156,9 +156,9 @@ def api_trade_signal():
     for window in analysis_windows:
         data[f'RSI_{window}'] = compute_rsi(data, lookback=window)
         data[f'MACD_line_{window}'], data[f'MACD_signal_{window}'], data[f'MACD_hist_{window}'] = compute_macd(data)
-        data[f'Stoch_{window}'] = stochastic_oscillator(data, window=window)
-        data[f'CCI_index_{window}'] = compute_cci(data, window=window)
-        data[f'ATR_value_{window}'] = compute_atr(data, window=window)
+        data[f'Stochastic_{window}'] = stochastic_oscillator(data, window=window)
+        data[f'CCI_{window}'] = compute_cci(data, window=window)
+        data[f'ATR_{window}'] = compute_atr(data, window=window)
         data[f'SMA_{window}'] = calculate_simple_moving_average(data, period=window)
         data[f'EMA_{window}'] = calculate_exponential_moving_average(data, smoothing=window)
         data[f'WMA_{window}'] = calculate_weighted_moving_average(data, period=window)

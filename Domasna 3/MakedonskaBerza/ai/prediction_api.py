@@ -27,7 +27,7 @@ def predict_next_month_price(historical_data: pd.DataFrame) -> float:
 
     historical_data = historical_data.dropna()
 
-    if len(historical_data < 30):
+    if len(historical_data) < 30:
         raise ValueError("Not enough data to make a reliable prediction.")
 
     # Apply ARIMA model

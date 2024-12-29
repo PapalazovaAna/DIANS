@@ -190,7 +190,7 @@
                         if (!response.ok) {
                             throw new Error("Failed to fetch prediction");
                         }
-                        return response.json();
+                        return response.text();
                     })
                     .then(signal => {
                         // Update the text element with the predicted price
@@ -226,9 +226,9 @@
                         }
                         return response.json();
                     })
-                    .then(predictedPrice => {
+                    .then(response => {
                         // Update the text element with the predicted price
-                        predictionElement.textContent = `Предвидена цена: ${predictedPrice} ден;`
+                        predictionElement.textContent = `Предвидена цена: ${response} ден;`
                         predictionElement.classList.add("success");
                         predictionElement.classList.remove("error");
                     })
