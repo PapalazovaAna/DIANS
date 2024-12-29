@@ -69,8 +69,8 @@ public class LSTMService {
 
         System.out.println("Response:" + responseBody);
 
-        if (responseBody != null && responseBody.containsKey("signal_result")) {
-            return responseBody.get("signal_result").toString();
+        if (responseBody != null && responseBody.containsKey("trade_signal")) {
+            return responseBody.get("trade_signal").toString();
         } else {
             throw new RuntimeException("Failed to retrieve a valid signal from the Python API.");
         }
