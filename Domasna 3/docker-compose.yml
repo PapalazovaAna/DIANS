@@ -1,0 +1,85 @@
+version: '3.7'
+
+services:
+  # PostgreSQL база
+  postgres-db:
+    image: postgres:17.2
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD:
+      POSTGRES_DB: dians
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - backend
+    ports:
+      - "5432:5432"
+
+  #GLAVEN PROEKT !!!
+  main-service:
+    build: ./MakedonskaBerza
+    container_name: main-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres-db
+    networks:
+      - backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/dians
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD:
+
+  # FILTER ONE !!!
+  filter-one-service:
+    build: ./Mikroservices/FilterOneMikroservis
+    container_name: filter-one-service
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres-db
+    networks:
+      - backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/dians # URL за базата
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD:
+
+  #FILTER TWO !!!
+  filter-two-service:
+    build: ./Mikroservices/FilterTwoMikroservis
+    container_name: filter-two-service
+    ports:
+      - "8082:8080"
+    depends_on:
+      - postgres-db
+    networks:
+      - backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/dians # URL за базата
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD:
+
+  # FILTER THREE !!!
+  filter-three-service:
+    build: ./Mikroservices/FilterThreeMikroservis
+    container_name: filter-three-service
+    ports:
+      - "8083:8080"
+    depends_on:
+      - postgres-db
+    networks:
+      - backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/dians # URL за базата
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD:
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  postgres-data:
+    driver: local
