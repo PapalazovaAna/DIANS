@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class FilterOneService {
     private final StockRepository stockRepository;
-    private static final String STOCK_MARKET_URL = "https://example.com/stock-market"; // Замени со точниот URL
+    private static final String STOCK_MARKET_URL = "https://www.mse.mk/mk/stats/symbolhistory/kmb"; // Замени со точниот URL
 
     public FilterOneService(StockRepository stockRepository) {
         this.stockRepository = stockRepository;

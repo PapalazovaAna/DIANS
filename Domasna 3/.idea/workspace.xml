@@ -5,241 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fdd2629-a1a5-4d74-a4ab-951f10e4e036" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/mockups/Mockups алатка.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/mockups/Втора страна - трендови на цени.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/mockups/Прва страна - избор на компанија.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/mockups/Трета страна - историја на цени.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/Screen Recorder Video - апликација.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/ai/prediction_api.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/HELP.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/project1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/main/java/com/example/project1/Project1Application.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/main/java/com/example/project1/data/DataInit.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/main/java/com/example/project1/data/DataParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/main/java/com/example/project1/data/pipeline/Filter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/main/java/com/example/project1/data/pipeline/Pipe.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/main/java/com/example/project1/data/pipeline/impl/FilterOne.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/main/java/com/example/project1/data/pipeline/impl/FilterThree.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/main/java/com/example/project1/data/pipeline/impl/FilterTwo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/main/java/com/example/project1/model/StockEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/main/java/com/example/project1/model/StockRecordEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/main/java/com/example/project1/repository/StockRecordRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/main/java/com/example/project1/repository/StockRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/main/java/com/example/project1/service/LSTMService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/main/java/com/example/project1/service/StockService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/main/java/com/example/project1/web/LSTMController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/main/java/com/example/project1/web/PageController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/main/resources/templates/company.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/main/resources/templates/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/main/resources/templates/layout/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/main/resources/templates/today.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/src/test/java/com/example/project1/Project1ApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/classes/com/example/project1/Project1Application.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/classes/com/example/project1/data/DataInit.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/classes/com/example/project1/data/Transformer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/classes/com/example/project1/data/pipeline/Filter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/classes/com/example/project1/data/pipeline/Pipe.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/classes/com/example/project1/data/pipeline/impl/F1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/classes/com/example/project1/data/pipeline/impl/F2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/classes/com/example/project1/data/pipeline/impl/F3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/classes/com/example/project1/model/CompanyHistoryPriceModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/classes/com/example/project1/model/CompanyModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/classes/com/example/project1/repository/CompanyHistoryPriceRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/classes/com/example/project1/repository/CompanyModelRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/classes/com/example/project1/service/LSTMService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/classes/com/example/project1/service/SearchService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/classes/com/example/project1/web/LSTMController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/classes/com/example/project1/web/SearchController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/classes/templates/company.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/classes/templates/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/classes/templates/layout/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/classes/templates/today.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/TechPrototype/project1/target/test-classes/com/example/project1/Project1ApplicationTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/Избор на компанија, почетна страна - screenshot.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/Историја на цени страна - screenshot.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/tech prototype/Трендови на цени - screenshot.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/архитектура/conceptual_architecture.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/архитектура/execution_architecture.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/архитектура/implementation_architecture.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Domasna 2/архитектура/Опис на архитектури.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/java/com/example/project1/data/DataInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/java/com/example/project1/data/DataInit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/java/com/example/project1/data/pipeline/impl/FilterOne.java" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/java/com/example/project1/data/pipeline/impl/FilterOne.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/java/com/example/project1/data/pipeline/impl/FilterThree.java" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/java/com/example/project1/data/pipeline/impl/FilterThree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/java/com/example/project1/data/pipeline/impl/FilterTwo.java" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/java/com/example/project1/data/pipeline/impl/FilterTwo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/ADIN.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/ALK.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/ALKB.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/AMEH.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/APTK.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/ATPP.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/AUMK.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/BANA.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/BGOR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/BIKF.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/BIM.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/BLTU.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/CBNG.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/CDHV.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/CEVI.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/CKB.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/CKBKO.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/DEBA.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/DIMI.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/EDST.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/ELMA.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/ELNC.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/ENER.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/ENSA.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/EUHA.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/EUMK.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/EVRO.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/FAKM.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/FERS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/FKTL.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/FROT.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/FUBT.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/GALE.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/GDKM.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/GECK.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/GECT.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/GIMS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/GRDN.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/GRNT.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/GRSN.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/GRZD.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/GTC.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/GTRG.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/IJUG.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/INB.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/INHO.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/INOV.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/INPR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/INTP.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/JAKO.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/JUSK.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/KARO.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/KDFO.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/KJUBI.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/KKST.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/KLST.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/KMB.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/KMPR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/KOMU.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/KONF.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/KONZ.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/KORZ.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/KPSS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/KULT.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/KVAS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/LAJO.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/LHND.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/LOTO.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/LOZP.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/MAGP.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/MAKP.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/MAKS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/MB.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/MERM.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/MKSD.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/MLKR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/MODA.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/MPOL.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/MPT.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/MPTE.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/MTUR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/MZHE.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/MZPU.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/NEME.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/NOSK.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/OBPP.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/OILK.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/OKTA.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/OMOS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/OPFO.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/OPTK.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/ORAN.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/OSPO.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/OTEK.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/PELK.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/PGGV.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/PKB.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/POPK.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/PPIV.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/PROD.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/PROT.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/PTRS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/RADE.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/REPL.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/RIMI.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/RINS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/RZEK.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/RZIT.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/RZIZ.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/RZLE.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/RZLV.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/RZTK.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/RZUG.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/RZUS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/SBT.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/SDOM.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/SIL.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/SKON.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/SKP.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/SLAV.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/SNBT.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/SNBTO.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/SOLN.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/SPAZ.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/SPAZP.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/SPOL.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/SSPR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/STB.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/STBP.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/STIL.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/STOK.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/TAJM.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/TBKO.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/TEAL.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/TEHN.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/TEL.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/TETE.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/TIKV.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/TKPR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/TKVS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/TNB.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/TRDB.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/TRPS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/TRUB.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/TSMP.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/TSZS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/TTK.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/TTKO.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/UNI.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/USJE.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/VARG.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/VFPM.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/VITA.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/VROS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/VSC.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/VTKS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/ZAS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/ZILU.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/ZILUP.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/ZIMS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/ZKAR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/ZPKO.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/ZPOG.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/stock_data_files/ZUAS.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/time.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Домашна 1/СРС-Апликација-за-анализа-на-Македонската-берза-221004-221006-221093.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/project1/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/project1/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/target/classes/com/example/project1/data/DataInit.class" beforeDir="false" afterPath="$PROJECT_DIR$/MakedonskaBerza/project1/target/classes/com/example/project1/data/DataInit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/target/classes/com/example/project1/data/pipeline/impl/FilterOne.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/target/classes/com/example/project1/data/pipeline/impl/FilterThree.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MakedonskaBerza/project1/target/classes/com/example/project1/data/pipeline/impl/FilterTwo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mikroservices/FilterOneMikroservis/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Mikroservices/FilterOneMikroservis/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mikroservices/FilterOneMikroservis/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Mikroservices/FilterOneMikroservis/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mikroservices/FilterOneMikroservis/src/main/java/mk/ukim/finki/filteronemikroservis/service/FilterOneService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Mikroservices/FilterOneMikroservis/src/main/java/mk/ukim/finki/filteronemikroservis/service/FilterOneService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mikroservices/FilterOneMikroservis/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Mikroservices/FilterOneMikroservis/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mikroservices/FilterThreeMikroservis/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Mikroservices/FilterThreeMikroservis/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mikroservices/FilterThreeMikroservis/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Mikroservices/FilterThreeMikroservis/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mikroservices/FilterThreeMikroservis/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Mikroservices/FilterThreeMikroservis/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mikroservices/FilterTwoMikroservis/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Mikroservices/FilterTwoMikroservis/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mikroservices/FilterTwoMikroservis/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Mikroservices/FilterTwoMikroservis/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mikroservices/FilterTwoMikroservis/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Mikroservices/FilterTwoMikroservis/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -256,6 +45,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -272,10 +64,18 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.FilterOneMikroservisApplication.executor": "Run",
+    "Spring Boot.FilterThreeMikroservisApplication.executor": "Run",
+    "Spring Boot.FilterTwoMikroservisApplication.executor": "Run",
+    "Spring Boot.Project1Application.executor": "Run",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "domasna4",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/PC/Desktop/DizajnDomasna4/Domasna 3",
     "node.js.detected.package.eslint": "true",
@@ -286,10 +86,41 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
+    "run.configurations.included.in.services": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Project1Application">
+    <configuration name="FilterOneMikroservisApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="wp-2024 (2)" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="mk.ukim.finki.filteronemikroservis.FilterOneMikroservisApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FilterThreeMikroservisApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="wp-2024 (1)" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="mk.ukim.finki.filterthreemikroservis.FilterThreeMikroservisApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FilterTwoMikroservisApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="wp-2024" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="mk.ukim.finki.filtertwomikroservis.FilterTwoMikroservisApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Project1Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="project1" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.project1.Project1Application" />
@@ -311,6 +142,8 @@
       <workItem from="1735416081398" duration="146000" />
       <workItem from="1735467238402" duration="24000" />
       <workItem from="1736634497162" duration="2030000" />
+      <workItem from="1736938293773" duration="670000" />
+      <workItem from="1736943854141" duration="8635000" />
     </task>
     <servers />
   </component>

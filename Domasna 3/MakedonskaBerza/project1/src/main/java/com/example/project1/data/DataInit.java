@@ -31,7 +31,7 @@ public class DataInit {
         long startTime = System.nanoTime();
 
         ResponseEntity<List<StockEntity>> response1 = restTemplate.exchange(
-                "http://filter-one-service/filter-one/run",
+                "http://127.0.0.1:8081/filter-one/run", //SO DOKER NE TREBA 127.0.0.1 !!!!!!!!!!!!
                 org.springframework.http.HttpMethod.POST,
                 null,
                 new org.springframework.core.ParameterizedTypeReference<List<StockEntity>>() {}
@@ -39,7 +39,7 @@ public class DataInit {
         List<StockEntity> stockEntities1 = response1.getBody();
 
         ResponseEntity<List<StockEntity>> response2 = restTemplate.exchange(
-                "http://filter-two-service/filter-two/run",
+                "http://127.0.0.1:8082/filter-two/run",
                 org.springframework.http.HttpMethod.POST,
                 null,
                 new org.springframework.core.ParameterizedTypeReference<List<StockEntity>>() {}
@@ -51,7 +51,7 @@ public class DataInit {
         if (stockEntities2 != null) combinedStockEntities.addAll(stockEntities2);
 
         ResponseEntity<List<StockEntity>> response3 = restTemplate.exchange(
-                "http://filter-three-service/filter-three/run",
+                "http://127.0.0.1:8083/filter-three/run",
                 org.springframework.http.HttpMethod.POST,
                 new org.springframework.http.HttpEntity<>(combinedStockEntities),
                 new org.springframework.core.ParameterizedTypeReference<List<StockEntity>>() {}
