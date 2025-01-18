@@ -1,4 +1,4 @@
-package com.example.project1.data.pipeline;
+/*package com.example.project1.data.pipeline;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -22,3 +22,5 @@ public class Pipe<T> {
     }
 
 }
+
+ */

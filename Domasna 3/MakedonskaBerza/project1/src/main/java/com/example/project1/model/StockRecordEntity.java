@@ -1,12 +1,14 @@
 package com.example.project1.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name = "historical_data")
 @Data
@@ -16,7 +18,7 @@ public class StockRecordEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Column(name = "date")
     private LocalDate date;
 
@@ -44,8 +46,10 @@ public class StockRecordEntity {
     @Column(name = "total_turnover")
     private Integer totalTurnover;
 
+
     @ManyToOne
     @JoinColumn(name = "company_id")
+    @JsonIgnoreProperties("historicalData")
     private StockEntity company;
 
     public StockRecordEntity(LocalDate date, Double lastTransactionPrice, Double maxPrice, Double minPrice, Double averagePrice, Double percentageChange, Integer quantity, Integer turnoverBest, Integer totalTurnover) {

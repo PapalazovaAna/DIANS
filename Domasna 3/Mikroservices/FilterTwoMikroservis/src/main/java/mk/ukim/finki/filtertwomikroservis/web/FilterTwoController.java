@@ -3,6 +3,9 @@ package mk.ukim.finki.filtertwomikroservis.web;
 import mk.ukim.finki.filtertwomikroservis.model.StockEntity;
 import mk.ukim.finki.filtertwomikroservis.service.FilterTwoService;
 import mk.ukim.finki.filtertwomikroservis.repository.StockRepository;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,11 +17,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/filter-two")
 public class FilterTwoController {
-
     private final FilterTwoService filterTwoService;
     private final StockRepository stockRepository;
 
-    // Constructor to inject services
     public FilterTwoController(FilterTwoService filterTwoService, StockRepository stockRepository) {
         this.filterTwoService = filterTwoService;
         this.stockRepository = stockRepository;
@@ -27,17 +28,15 @@ public class FilterTwoController {
     @PostMapping("/run")
     public ResponseEntity<List<StockEntity>> runFilter() {
         try {
-            // Fetch the list of all stocks from the database
-            List<StockEntity> stockEntities = stockRepository.findAll(); // Retrieves all StockEntity records from the database
-
-            // Pass the list to the execute method in the service
+            List<StockEntity> stockEntities = stockRepository.findAll();
             List<StockEntity> filteredStocks = filterTwoService.execute(stockEntities);
 
-            // Return the filtered stocks as a response
-            return ResponseEntity.ok(filteredStocks);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+
+            return new ResponseEntity<>(filteredStocks, headers, HttpStatus.OK);
         } catch (IOException e) {
-            // If an error occurs, return HTTP 500 (Internal Server Error)
-            return ResponseEntity.status(500).build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 }

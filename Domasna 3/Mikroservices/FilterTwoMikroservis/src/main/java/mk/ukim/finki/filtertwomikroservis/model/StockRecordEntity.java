@@ -1,8 +1,7 @@
 package mk.ukim.finki.filtertwomikroservis.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -47,6 +46,7 @@ public class StockRecordEntity {
 
     @ManyToOne
     @JoinColumn(name = "company_id")
+    @JsonBackReference
     private StockEntity company;
 
     public StockRecordEntity(LocalDate date, Double lastTransactionPrice, Double maxPrice, Double minPrice, Double averagePrice, Double percentageChange, Integer quantity, Integer turnoverBest, Integer totalTurnover) {

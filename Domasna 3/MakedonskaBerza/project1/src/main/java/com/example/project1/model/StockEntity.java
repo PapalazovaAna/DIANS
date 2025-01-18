@@ -1,5 +1,6 @@
 package com.example.project1.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -7,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.List;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name = "companies")
 @Data
@@ -25,6 +26,7 @@ public class StockEntity {
     private LocalDate lastUpdated;
 
     @OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("company")
     private List<StockRecordEntity> historicalData;
 
     public StockEntity(String companyCode) {

@@ -46,6 +46,7 @@ public class StockRecordEntity {
 
     @ManyToOne
     @JoinColumn(name = "company_id")
+    @JsonBackReference
     private StockEntity company;
 
     public StockRecordEntity(LocalDate date, Double lastTransactionPrice, Double maxPrice, Double minPrice, Double averagePrice, Double percentageChange, Integer quantity, Integer turnoverBest, Integer totalTurnover) {

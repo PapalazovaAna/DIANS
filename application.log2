@@ -1,0 +1,32 @@
+2025-01-16T21:35:46.836+01:00  INFO 14732 --- [project1] [main] c.example.project1.Project1Application   : Starting Project1Application using Java 21 with PID 14732 (C:\Users\Marija\Desktop\DIANS-4\Domasna 3\MakedonskaBerza\project1\target\classes started by Marija in C:\Users\Marija\Desktop\DIANS-4)
+2025-01-16T21:35:46.840+01:00  INFO 14732 --- [project1] [main] c.example.project1.Project1Application   : No active profile set, falling back to 1 default profile: "default"
+2025-01-16T21:35:48.228+01:00  INFO 14732 --- [project1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-01-16T21:35:48.231+01:00  INFO 14732 --- [project1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2025-01-16T21:35:48.297+01:00  INFO 14732 --- [project1] [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.project1.repository.StockRecordRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2025-01-16T21:35:48.300+01:00  INFO 14732 --- [project1] [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.project1.repository.StockRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2025-01-16T21:35:48.301+01:00  INFO 14732 --- [project1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61 ms. Found 0 JDBC repository interfaces.
+2025-01-16T21:35:48.327+01:00  INFO 14732 --- [project1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-01-16T21:35:48.329+01:00  INFO 14732 --- [project1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-16T21:35:48.390+01:00  INFO 14732 --- [project1] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 53 ms. Found 2 JPA repository interfaces.
+2025-01-16T21:35:49.317+01:00  INFO 14732 --- [project1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-01-16T21:35:49.349+01:00  INFO 14732 --- [project1] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-01-16T21:35:49.351+01:00  INFO 14732 --- [project1] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-16T21:35:49.462+01:00  INFO 14732 --- [project1] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-01-16T21:35:49.462+01:00  INFO 14732 --- [project1] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2528 ms
+2025-01-16T21:35:49.678+01:00  INFO 14732 --- [project1] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-16T21:35:49.765+01:00  INFO 14732 --- [project1] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-01-16T21:35:49.808+01:00  INFO 14732 --- [project1] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-01-16T21:35:50.194+01:00  INFO 14732 --- [project1] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-16T21:35:50.235+01:00  INFO 14732 --- [project1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-01-16T21:35:50.522+01:00  INFO 14732 --- [project1] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@138a85d3
+2025-01-16T21:35:50.525+01:00  INFO 14732 --- [project1] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-01-16T21:35:50.608+01:00  WARN 14732 --- [project1] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-16T21:35:51.991+01:00  INFO 14732 --- [project1] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-16T21:35:52.137+01:00  INFO 14732 --- [project1] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-16T21:35:52.700+01:00  WARN 14732 --- [project1] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-16T21:35:52.726+01:00  INFO 14732 --- [project1] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-01-16T21:35:53.200+01:00  INFO 14732 --- [project1] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-01-16T21:35:53.208+01:00  INFO 14732 --- [project1] [main] c.example.project1.Project1Application   : Started Project1Application in 7.228 seconds (process running for 9.028)
+2025-01-16T21:37:41.796+01:00  INFO 14732 --- [project1] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-16T21:37:42.397+01:00  INFO 14732 --- [project1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-01-16T21:37:42.650+01:00  INFO 14732 --- [project1] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
